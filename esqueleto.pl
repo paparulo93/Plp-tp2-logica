@@ -43,7 +43,7 @@ match_inst(L, or(X,_)) :- match_inst(L, X).
 match_inst(L, or(_,Y)) :- match_inst(L, Y).
 match_inst(L, concat(X,Y)) :- append(I, D, L), match_inst(I, X), match_inst(D,Y).
 match_inst([], star(_)).
-match_inst(L, star(E)) :- append(I, D, L), match_inst(I, E), match_inst(D,star(E)).
+match_inst(L, star(E)) :- append(I, D, L), length(I, T), T > 0, match_inst(I, E), match_inst(D,star(E)).
 
 % Ejercicio 5: match(?Cadena, +RegEx)
 
